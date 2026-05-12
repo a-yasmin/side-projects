@@ -20,7 +20,7 @@ const Page: FC<PropsWithChildren<PageProps>> = ({
         {/* header */}
         <main
           className={cn(
-            "flex flex-col items-center w-screen min-h-screen px-20",
+            "flex flex-col items-center justify-center w-screen min-h-screen",
           )}
         >
           {children}
