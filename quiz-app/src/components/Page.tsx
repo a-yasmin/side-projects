@@ -1,7 +1,7 @@
-import React, { type FC, type PropsWithChildren, type ReactNode } from "react";
-import type { BoxProps } from "./ui/Box";
-import Box from "./ui/Box";
+import { type FC, type PropsWithChildren, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import type { BoxProps } from "./Box";
+import Box from "./Box";
 
 export type PageProps = {
   header?: ReactNode;
