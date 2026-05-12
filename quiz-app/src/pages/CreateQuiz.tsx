@@ -1,21 +1,16 @@
 import IconBack from "@/assets/icons/IconBack";
 import Page from "@/components/Page";
-import Box from "@/components/ui/Box";
-import Button from "@/components/ui/Button";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardHeader,
-} from "@/components/ui/Card";
-import HStack from "@/components/ui/HStack";
-import Input from "@/components/ui/Input";
-import RadioGroup, { RadioGroupItem } from "@/components/ui/radio-group";
-import ScrollArea from "@/components/ui/ScrollArea";
-import VStack from "@/components/ui/VStack";
+import Box from "@/components/Box";
+import Button from "@/components/Button";
+import { Card, CardAction, CardContent, CardHeader } from "@/components/Card";
+import HStack from "@/components/HStack";
+import Input from "@/components/Input";
+import ScrollArea from "@/components/ScrollArea";
+import VStack from "@/components/VStack";
 import { useCallback, useState, type FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import RadioGroup, { RadioGroupItem } from "@/components/RadioGroup";
 
 type Option = { id: number };
 type Question = { id: number; options: Option[] };

@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { quizzes } from "@/data/questions";
 import type { FC } from "react";
-import Text from "@/components/ui/Text";
+import Text from "@/components/Text";
 import Page from "@/components/Page";
-import VStack from "@/components/ui/VStack";
-import Button from "@/components/ui/Button";
-import HStack from "@/components/ui/HStack";
+import VStack from "@/components/VStack";
+import Button from "@/components/Button";
+import HStack from "@/components/HStack";
 import IconBack from "@/assets/icons/IconBack";
 
 const QuizPage: FC = () => {

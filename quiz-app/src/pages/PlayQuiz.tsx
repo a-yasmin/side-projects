@@ -1,7 +1,7 @@
-import Box from "@/components/ui/Box";
-import { Card } from "@/components/ui/Card";
-import Text from "@/components/ui/Text";
-import VStack from "@/components/ui/VStack";
+import Box from "@/components/Box";
+import { Card } from "@/components/Card";
+import Text from "@/components/Text";
+import VStack from "@/components/VStack";
 import { useCallback, useState, type FC } from "react";
 import school from "../assets/school.png";
 import science from "../assets/science.png";
@@ -15,10 +15,9 @@ import { quizzes } from "@/data/questions";
 import { useNavigate } from "react-router-dom";
 import Page from "@/components/Page";
 import { cn } from "@/lib/utils";
-import Button from "@/components/ui/Button";
-import HStack from "@/components/ui/HStack";
+import Button from "@/components/Button";
 import IconBack from "@/assets/icons/IconBack";
-import Stack from "@/components/ui/Stack";
+import Stack from "@/components/Stack";
 
 type TopicOptions = {
   id: string;
@@ -53,15 +52,17 @@ const PlayQuiz: FC = () => {
   return (
     <Page className="bg-linear-to-br from-blue-100 via-blue-200 to-indigo-300">
       <Stack className="flex-col gap-3">
-        <Button onClick={() => navigate(-1)} className="px-3 py-4 w-fit">
-          <HStack>
-            <IconBack />
-            <Text>Back</Text>
-          </HStack>
+        <Button
+          onClick={() => navigate(-1)}
+          leftIcon={<IconBack size={16} />}
+          className="w-fit"
+        >
+          Back
         </Button>
         <Card className="w-full p-12 border border-white/60 bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl shadow-blue-200/50 ">
           <VStack>
             <Text>Pick a Topic</Text>
+
             {/* grid of topics */}
             <Box className="w-full grid grid-cols-4 gap-4">
               {TOPICS.map((topic) => (
@@ -74,8 +75,6 @@ const PlayQuiz: FC = () => {
                       : "bg-blue-100 hover:bg-indigo-200",
                     "hover:shadow-xl hover:shadow-indigo-400/40 hover:-translate-y-1 transition-all duration-200 flex items-center justify-center",
                   )}
-                  // className="w-full bg-linear-to-br from-indigo-500 to-indigo-600 text-white p-6 cursor-pointer rounded-2xl h-[140px] hover:shadow-xl hover:shadow-indigo-400/40 hover:-translate-y-1 transition-all duration-200 flex items-center justify-center"
-
                   onClick={() => {
                     setSelectedTopic(topic);
                   }}
@@ -88,7 +87,8 @@ const PlayQuiz: FC = () => {
                 </Box>
               ))}
             </Box>
-            {/* list of quiz of the topics */}
+
+            {/* List of quiz of the topics */}
             <Text>
               {selectedTopic.name} - {getNumberOfQuiz(selectedTopic.id)}{" "}
               {getNumberOfQuiz(selectedTopic.id) === 1 ? "quiz" : "quizzes"}

@@ -1,10 +1,10 @@
-import Box from "@/components/ui/Box";
-import Stack from "@/components/ui/Stack";
+import Box from "@/components/Box";
+import Stack from "@/components/Stack";
 import { type FC, useState } from "react";
-import Text from "@/components/ui/Text";
-import VStack from "@/components/ui/VStack";
+import Text from "@/components/Text";
+import VStack from "@/components/VStack";
 import { Link } from "react-router-dom";
-import { Card } from "@/components/ui/Card";
+import { Card } from "@/components/Card";
 
 const Home: FC = () => {
   const [hovered, setHovered] = useState<"create" | "play" | null>(null);
