@@ -1,3 +1,4 @@
+import IconBack from "@/assets/icons/IconBack";
 import Page from "@/components/Page";
 import Box from "@/components/ui/Box";
 import Button from "@/components/ui/Button";
@@ -13,6 +14,7 @@ import RadioGroup, { RadioGroupItem } from "@/components/ui/radio-group";
 import ScrollArea from "@/components/ui/ScrollArea";
 import VStack from "@/components/ui/VStack";
 import { useCallback, useState, type FC } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 type Option = { id: number };
@@ -27,6 +29,7 @@ const makeQuestion = (): Question => ({
 
 const CreateQuiz: FC = () => {
   const [questions, setQuestions] = useState<Question[]>([makeQuestion()]);
+  const navigate = useNavigate();
 
   const addQuestion = useCallback(() => {
     setQuestions((prev) => [...prev, makeQuestion()]);
@@ -56,17 +59,42 @@ const CreateQuiz: FC = () => {
   }, []);
 
   return (
-    <Page>
+    <Page className="w-screen h-screen flex items-center justify-center bg-linear-to-br from-blue-100 via-blue-200 to-indigo-300">
       <VStack className="w-1/2 h-screen justify-center items-center">
-        <HStack className="w-full justify-end gap-2">
-          <Button className="text-white">Save</Button>
-          <Button className="text-white self-end w-fit" onClick={addQuestion}>
-            Add Question
+        <Box className="w-full flex flex-row justify-between">
+          <Button
+            onClick={() => navigate(-1)}
+            leftIcon={<IconBack size={16} />}
+          >
+            Back
           </Button>
-        </HStack>
+          <HStack className="flex-row gap-2">
+            <Button>Save</Button>
+            <Button onClick={addQuestion}>Add Question</Button>
+          </HStack>
+        </Box>
 
         <ScrollArea className="w-full h-fit">
           <VStack className="w-full">
+            {/* Quiz title and description */}
+            <Card>
+              <CardHeader className="gap-4">
+                <Input
+                  htmlFor="quiz-title"
+                  type="text"
+                  label="Quiz Title"
+                  placeholder="Enter quiz title..."
+                />
+                <Input
+                  htmlFor="quiz-description"
+                  type="text"
+                  label="Quiz Description"
+                  placeholder="Enter quiz description..."
+                />
+              </CardHeader>
+            </Card>
+
+            {/* List of questions */}
             {questions.map((question, index) => (
               <Card key={question.id}>
                 <CardHeader>
@@ -87,8 +115,11 @@ const CreateQuiz: FC = () => {
                 <CardContent>
                   <RadioGroup>
                     {question.options.map((option) => (
-                      <div key={option.id} className="flex items-center gap-2">
-                        <RadioGroupItem value={`option-${option.id}`} />
+                      <Box key={option.id} className="flex items-center gap-2">
+                        <RadioGroupItem
+                          value={`option-${option.id}`}
+                          className="data-checked:bg-green-600 data-checked:border-green-600"
+                        />
                         <Input
                           htmlFor={`option-${option.id}`}
                           type="text"
@@ -102,7 +133,7 @@ const CreateQuiz: FC = () => {
                         >
                           ×
                         </Box>
-                      </div>
+                      </Box>
                     ))}
                   </RadioGroup>
                 </CardContent>
